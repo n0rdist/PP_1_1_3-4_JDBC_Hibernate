@@ -2,6 +2,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLSyntaxErrorException;
@@ -20,7 +21,13 @@ public class Main {
         userDao.saveUser("Name4", "LastName4", (byte) 38);
 
         userDao.removeUserById(1);
-        userDao.getAllUsers();
+
+        for (User user: userDao.getAllUsers()
+        ) {
+            System.out.println(user.getName());
+
+        }
+//        userDao.getAllUsers();
         userDao.cleanUsersTable();
         userDao.dropUsersTable();
     }
